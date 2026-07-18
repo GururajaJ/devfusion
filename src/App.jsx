@@ -6,7 +6,7 @@ import Problem from './components/Problem';
 import HowWeAreDifferent from './components/HowWeAreDifferent';
 import Services from './components/Services';
 import Pricing from './components/Pricing';
-import FounderNote from './components/FounderNote';
+
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -24,7 +24,7 @@ function App() {
             <HowWeAreDifferent />
             <Services />
             <Pricing />
-            <FounderNote />
+
             <FAQ />
             <Contact />
             <Footer />
