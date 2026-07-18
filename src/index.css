@@ -942,6 +942,7 @@ pre, code {
 /* --- 8. FAQ --- */
 .faq-section {
     padding: var(--spacing-xxl) 0;
+    background-color: #F0F4F8;
 }
 
 .faq-accordion {
@@ -1013,6 +1014,7 @@ pre, code {
 /* --- 9. Final CTA & Form --- */
 .contact-section {
     padding: var(--spacing-xxl) 0;
+    background-color: var(--color-bg-white);
 }
 
 .contact-card {
