@@ -5,7 +5,7 @@ export default function FAQ() {
 
     const faqItems = [
         {
-            question: "How long does a project take?",
+            question: "How long does a typical project take?",
             answer: "Depends on scope. Most landing pages and small apps take 1 to 3 weeks. We'll give you a clear timeline in your quote."
         },
         {
@@ -13,7 +13,7 @@ export default function FAQ() {
             answer: "You get full documentation and a walkthrough video with every project, so you understand how your software works. You're never forced to come back to us for basic changes."
         },
         {
-            question: "Do you offer ongoing support?",
+            question: "Do you offer ongoing support after handover?",
             answer: "Yes, optional support plans are available if you want us to maintain or update your software, but it is never required."
         },
         {
@@ -21,7 +21,7 @@ export default function FAQ() {
             answer: "We agree on a flat rate upfront. Typically a portion is paid to start, and the rest on delivery, with full details shared in your quote."
         },
         {
-            question: "Is my information kept private?",
+            question: "Is my project information kept private?",
             answer: "Yes. We never share or sell your data. Your project details and personal information stay strictly between us."
         }
     ];

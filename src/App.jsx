@@ -5,16 +5,29 @@ import WhoWeWorkWith from './components/WhoWeWorkWith';
 import Problem from './components/Problem';
 import HowWeAreDifferent from './components/HowWeAreDifferent';
 import Services from './components/Services';
+import Portfolio from './components/Portfolio';
 import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import QuoteModal from './components/QuoteModal';
 import PrivacyModal from './components/PrivacyModal';
 import useAnimateOnScroll from './hooks/useAnimateOnScroll';
 
 function App() {
     const containerRef = useAnimateOnScroll();
+    const [quoteModalOpen, setQuoteModalOpen] = useState(false);
+    const [selectedService, setSelectedService] = useState('Not sure yet');
     const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
+
+    const handleOpenQuoteModal = (serviceName = 'Not sure yet') => {
+        setSelectedService(serviceName);
+        setQuoteModalOpen(true);
+    };
+
+    const handleCloseQuoteModal = () => {
+        setQuoteModalOpen(false);
+    };
 
     const handleOpenPrivacyModal = () => {
         setPrivacyModalOpen(true);
@@ -26,16 +39,23 @@ function App() {
 
     return (
         <div ref={containerRef}>
-            <Header />
-            <Hero />
+            <Header onOpenQuoteModal={handleOpenQuoteModal} />
+            <Hero onOpenQuoteModal={handleOpenQuoteModal} />
             <WhoWeWorkWith />
             <Problem />
             <HowWeAreDifferent />
             <Services />
-            <Pricing />
+            <Portfolio />
+            <Pricing onOpenQuoteModal={handleOpenQuoteModal} />
             <FAQ />
             <Contact />
             <Footer onOpenPrivacyModal={handleOpenPrivacyModal} />
+
+            <QuoteModal 
+                isOpen={quoteModalOpen} 
+                onClose={handleCloseQuoteModal} 
+                initialService={selectedService}
+            />
 
             <PrivacyModal 
                 isOpen={privacyModalOpen} 

@@ -10,14 +10,14 @@ export default function Footer({ onOpenPrivacyModal }) {
                         <Logo width={36} height={36} />
                         <span className="logo text-white">Zo<span className="logo-accent">serve</span></span>
                     </a>
-                    <p className="footer-tagline">Engineering digital independence. We build software you understand and own forever.</p>
+                    <p className="footer-tagline">Engineering digital independence. We build software you understand and own — forever.</p>
                 </div>
                 
                 <div className="footer-links-grid">
                     <div className="footer-link-group">
                         <span className="footer-group-title">Contact</span>
                         <a href="mailto:info@zoserve.com" className="footer-link">info@zoserve.com</a>
-                        <a href="https://wa.me/15550192834" target="_blank" rel="noopener noreferrer" className="footer-link">WhatsApp: +1 (555) 019-2834</a>
+                        <a href="https://wa.me/919976184318" target="_blank" rel="noopener noreferrer" className="footer-link">WhatsApp: +91 99761 84318</a>
                     </div>
                     <div className="footer-link-group">
                         <span className="footer-group-title">Legal &amp; Policy</span>

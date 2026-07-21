@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Logo from './Logo';
 
-export default function Header() {
+export default function Header({ onOpenQuoteModal }) {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -21,6 +21,14 @@ export default function Header() {
         setMobileOpen(false);
     };
 
+    const handleCtaClick = (e) => {
+        e.preventDefault();
+        setMobileOpen(false);
+        if (onOpenQuoteModal) {
+            onOpenQuoteModal('Not sure yet');
+        }
+    };
+
     return (
         <header className={`header ${scrolled ? 'scrolled' : ''}`}>
             <div className={`container header-container ${mobileOpen ? 'mobile-open' : ''}`}>
@@ -34,9 +42,9 @@ export default function Header() {
                     <a href="#services" className="nav-link" onClick={handleLinkClick}>Services</a>
                     <a href="#pricing" className="nav-link" onClick={handleLinkClick}>Pricing</a>
                     <a href="#faq" className="nav-link" onClick={handleLinkClick}>FAQ</a>
-                    <a href="#contact" className="btn btn-primary mobile-cta" onClick={handleLinkClick}>Get a Free Quote</a>
+                    <button className="btn btn-primary mobile-cta border-none cursor-pointer" onClick={handleCtaClick}>Get a Free Quote</button>
                 </nav>
-                <a href="#contact" className="btn btn-primary nav-cta" onClick={handleLinkClick}>Get a Free Quote</a>
+                <button className="btn btn-primary nav-cta border-none cursor-pointer" onClick={handleCtaClick}>Get a Free Quote</button>
                 <button className="mobile-nav-toggle" aria-label="Toggle Menu" onClick={toggleMobileMenu}>
                     <span className="material-symbols-outlined">
                         {mobileOpen ? 'close' : 'menu'}

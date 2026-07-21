@@ -3,14 +3,16 @@ import React, { useState } from 'react';
 export default function Contact() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [details, setDetails] = useState('');
+    const [service, setService] = useState('Not sure yet');
+    const [budget, setBudget] = useState('Not sure yet');
+    const [solveDetails, setSolveDetails] = useState('');
     const [status, setStatus] = useState(null); // 'loading', 'success', 'error'
     const [message, setMessage] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!name || !email || !details) {
+        if (!name || !email || !solveDetails) {
             setStatus('error');
             setMessage('Please fill in all fields.');
             return;
@@ -20,11 +22,13 @@ export default function Contact() {
 
         setTimeout(() => {
             setStatus('success');
-            setMessage(`Thank you, ${name}! We have received your details and will get back to you within 24 hours.`);
+            setMessage(`Thank you, ${name}! We have received your inquiry and will get back to you within 24 hours.`);
             
             setName('');
             setEmail('');
-            setDetails('');
+            setSolveDetails('');
+            setService('Not sure yet');
+            setBudget('Not sure yet');
         }, 1200);
     };
 
@@ -66,25 +70,67 @@ export default function Contact() {
                                 />
                             </div>
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="form-details">Project Details</label>
+
+                        <div className="form-grid mt-3">
+                            <div className="form-group">
+                                <label htmlFor="form-service">What do you want to build?</label>
+                                <select 
+                                    id="form-service"
+                                    value={service}
+                                    onChange={(e) => setService(e.target.value)}
+                                    disabled={status === 'loading'}
+                                    className="modal-select"
+                                    style={{ background: 'var(--color-bg-base)', border: '1px solid var(--color-border-light)' }}
+                                >
+                                    <option value="Landing Page / Website">Landing Page / Website (from $300)</option>
+                                    <option value="Web App (custom)">Web App (custom) (from $5,000)</option>
+                                    <option value="Mobile App">Mobile App (from $8,000)</option>
+                                    <option value="SaaS Tool Development">SaaS Tool Development (from $10,000)</option>
+                                    <option value="Not sure yet">Not sure yet</option>
+                                </select>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="form-budget">Estimated Budget (Optional)</label>
+                                <select 
+                                    id="form-budget"
+                                    value={budget}
+                                    onChange={(e) => setBudget(e.target.value)}
+                                    disabled={status === 'loading'}
+                                    className="modal-select"
+                                    style={{ background: 'var(--color-bg-base)', border: '1px solid var(--color-border-light)' }}
+                                >
+                                    <option value="Under $1,000">Under $1,000</option>
+                                    <option value="$1,000 - $5,000">$1,000 - $5,000</option>
+                                    <option value="$5,000 - $10,000">$5,000 - $10,000</option>
+                                    <option value="$10,000+">$10,000+</option>
+                                    <option value="Not sure yet">Not sure yet</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="form-group mt-3">
+                            <label htmlFor="form-solve">What are you trying to solve?</label>
                             <textarea 
-                                id="form-details" 
+                                id="form-solve" 
                                 rows="4" 
                                 required 
-                                placeholder="Tell us briefly about what you want to build (e.g. mobile app, web dashboard, landing page)..."
-                                value={details}
-                                onChange={(e) => setDetails(e.target.value)}
+                                placeholder="E.g., We need to automate our invoicing, build a booking flow for customers, or launch a mobile app..."
+                                value={solveDetails}
+                                onChange={(e) => setSolveDetails(e.target.value)}
                                 disabled={status === 'loading'}
                             ></textarea>
                         </div>
                         <button 
                             type="submit" 
-                            className="btn btn-accent form-submit-btn"
+                            className="btn btn-accent form-submit-btn mt-3"
                             disabled={status === 'loading'}
                         >
                             {status === 'loading' ? 'Sending...' : 'Get a Free Quote'}
                         </button>
+                        
+                        <p className="text-center text-light text-[11px] mt-2 opacity-80">
+                            No spam. Your details stay private.
+                        </p>
                     </form>
                     
                     {status && status !== 'loading' && (
@@ -100,9 +146,9 @@ export default function Contact() {
                                 <span className="material-symbols-outlined text-[20px]">mail</span>
                                 <span>info@zoserve.com</span>
                             </a>
-                            <a href="https://wa.me/15550192834" target="_blank" rel="noopener noreferrer" className="alt-link">
+                            <a href="https://wa.me/919976184318" target="_blank" rel="noopener noreferrer" className="alt-link">
                                 <span className="material-symbols-outlined text-[20px]">chat</span>
-                                <span>WhatsApp: +1 (555) 019-2834</span>
+                                <span>WhatsApp: +91 99761 84318</span>
                             </a>
                         </div>
                     </div>

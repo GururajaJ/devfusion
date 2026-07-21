@@ -9,7 +9,7 @@ export default function Problem() {
                         <span className="section-tagline tag-alert">The Industry Status Quo</span>
                         <h2 className="section-title">Software Shouldn't Cost a Fortune or Keep You Hostage</h2>
                         <p className="section-body">
-                            Most software agencies overcharge for basic work, bury you in unclear invoices, and build systems only they understand, leaving you stuck paying them forever just to make small changes. That's not a partnership. That's a trap.
+                            Most agencies overcharge for basic work, bury you in unclear invoices, and build systems only they understand — so you're stuck paying them forever for small changes. That's not a partnership. That's a trap.
                         </p>
                     </div>
                     <div className="problem-cards">

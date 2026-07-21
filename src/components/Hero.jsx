@@ -1,6 +1,13 @@
 import React from 'react';
 
-export default function Hero() {
+export default function Hero({ onOpenQuoteModal }) {
+    const handleCtaClick = (e) => {
+        e.preventDefault();
+        if (onOpenQuoteModal) {
+            onOpenQuoteModal('Not sure yet');
+        }
+    };
+
     return (
         <section className="hero-section">
             <div className="container hero-container">
@@ -11,12 +18,12 @@ export default function Hero() {
                         <span className="highlight-text">Zero Lock-In.</span>
                     </h1>
                     <p className="hero-subtitle">
-                        Zoserve builds web apps, mobile apps, and SaaS tools at fair prices with full documentation so you understand and own what we build for you.
+                        We build web apps, mobile apps, and SaaS tools at fair prices — with full documentation, so you understand and own everything we build for you.
                     </p>
                     <div className="hero-cta-wrapper">
-                        <a href="#contact" className="btn btn-primary hero-btn">
+                        <button onClick={handleCtaClick} className="btn btn-primary hero-btn border-none cursor-pointer">
                             Get a Free Quote
-                        </a>
+                        </button>
                         <div className="hero-cta-meta">
                             <span className="meta-main">No commitment.</span>
                             <span className="meta-sub">Reply within 24 hours.</span>
