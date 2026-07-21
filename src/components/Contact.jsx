@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { insertLead } from '../supabase';
+
 export default function Contact() {
     const [name, setName] = useState('');
     const [companyName, setCompanyName] = useState('');
@@ -12,7 +14,7 @@ export default function Contact() {
     const [status, setStatus] = useState(null); // 'loading', 'success', 'error'
     const [message, setMessage] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!name || !companyName || !email || !country || !phone) {
@@ -23,7 +25,17 @@ export default function Contact() {
 
         setStatus('loading');
 
-        setTimeout(() => {
+        try {
+            await insertLead({
+                name,
+                company_name: companyName,
+                email,
+                country,
+                phone,
+                service,
+                solve_details: solveDetails
+            });
+            
             setStatus('success');
             setMessage(`Thank you, ${name}! We have received your inquiry and will get back to you within 24 hours.`);
             
@@ -34,7 +46,10 @@ export default function Contact() {
             setPhone('');
             setSolveDetails('');
             setService('Other');
-        }, 1200);
+        } catch (error) {
+            setStatus('error');
+            setMessage(error.message || 'Failed to submit request. Please try again.');
+        }
     };
 
     return (

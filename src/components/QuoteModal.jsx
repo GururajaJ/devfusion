@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import { insertLead } from '../supabase';
+
 export default function QuoteModal({ isOpen, onClose, initialService = '' }) {
     const [name, setName] = useState('');
     const [companyName, setCompanyName] = useState('');
@@ -35,7 +37,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '' }) {
 
     if (!isOpen) return null;
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!name || !companyName || !email || !country || !phone) {
@@ -46,7 +48,17 @@ export default function QuoteModal({ isOpen, onClose, initialService = '' }) {
 
         setStatus('loading');
 
-        setTimeout(() => {
+        try {
+            await insertLead({
+                name,
+                company_name: companyName,
+                email,
+                country,
+                phone,
+                service,
+                solve_details: solveDetails
+            });
+            
             setStatus('success');
             setMessage(`Thank you, ${name}! Your demo request has been received. We'll get back to you within 24 hours.`);
             setTimeout(() => {
@@ -60,7 +72,10 @@ export default function QuoteModal({ isOpen, onClose, initialService = '' }) {
                 setMessage('');
                 onClose();
             }, 2500);
-        }, 1000);
+        } catch (error) {
+            setStatus('error');
+            setMessage(error.message || 'Failed to submit request. Please try again.');
+        }
     };
 
     return (
