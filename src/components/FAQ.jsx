@@ -6,19 +6,19 @@ export default function FAQ() {
     const faqItems = [
         {
             question: "How long does a project take?",
-            answer: "Depends on scope — most landing pages/small apps take 1–3 weeks. We'll give you a clear timeline in your quote."
+            answer: "Depends on scope. Most landing pages and small apps take 1 to 3 weeks. We'll give you a clear timeline in your quote."
         },
         {
             question: "What does \"client independence\" actually mean?",
-            answer: "You get full documentation and a walkthrough video with every project, so you understand how your software works — you're never forced to come back to us for basic changes."
+            answer: "You get full documentation and a walkthrough video with every project, so you understand how your software works. You're never forced to come back to us for basic changes."
         },
         {
             question: "Do you offer ongoing support?",
-            answer: "Yes, optional support plans are available if you want us to maintain or update your software — but it's never required."
+            answer: "Yes, optional support plans are available if you want us to maintain or update your software, but it is never required."
         },
         {
             question: "How does payment work?",
-            answer: "We agree on a flat rate upfront. Typically a portion is paid to start, and the rest on delivery — full details shared in your quote."
+            answer: "We agree on a flat rate upfront. Typically a portion is paid to start, and the rest on delivery, with full details shared in your quote."
         },
         {
             question: "Is my information kept private?",

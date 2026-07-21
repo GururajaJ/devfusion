@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import Logo from './Logo';
 
-export default function Header() {
+export default function Header({ onOpenQuoteModal }) {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -20,12 +21,20 @@ export default function Header() {
         setMobileOpen(false);
     };
 
+    const handleCtaClick = (e) => {
+        e.preventDefault();
+        setMobileOpen(false);
+        if (onOpenQuoteModal) {
+            onOpenQuoteModal();
+        }
+    };
+
     return (
         <header className={`header ${scrolled ? 'scrolled' : ''}`}>
             <div className={`container header-container ${mobileOpen ? 'mobile-open' : ''}`}>
                 <a href="#" className="brand-wrapper" onClick={handleLinkClick}>
-                    <img src="/logo.png" alt="devFusion logo" className="brand-logo" />
-                    <span className="logo">dev<span className="logo-accent">Fusion</span></span>
+                    <Logo width={36} height={36} />
+                    <span className="logo">Zo<span className="logo-accent">serve</span></span>
                 </a>
                 <nav className="nav-menu">
                     <a href="#about" className="nav-link" onClick={handleLinkClick}>About</a>
@@ -33,9 +42,9 @@ export default function Header() {
                     <a href="#services" className="nav-link" onClick={handleLinkClick}>Services</a>
                     <a href="#pricing" className="nav-link" onClick={handleLinkClick}>Pricing</a>
                     <a href="#faq" className="nav-link" onClick={handleLinkClick}>FAQ</a>
-                    <a href="#contact" className="btn btn-primary mobile-cta" onClick={handleLinkClick}>Get a Free Quote</a>
+                    <button className="btn btn-primary mobile-cta border-none cursor-pointer" onClick={handleCtaClick}>Get a Free Quote</button>
                 </nav>
-                <a href="#contact" className="btn btn-primary nav-cta" onClick={handleLinkClick}>Get a Free Quote</a>
+                <button className="btn btn-primary nav-cta border-none cursor-pointer" onClick={handleCtaClick}>Get a Free Quote</button>
                 <button className="mobile-nav-toggle" aria-label="Toggle Menu" onClick={toggleMobileMenu}>
                     <span className="material-symbols-outlined">
                         {mobileOpen ? 'close' : 'menu'}

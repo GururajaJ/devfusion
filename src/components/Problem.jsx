@@ -7,9 +7,9 @@ export default function Problem() {
                 <div className="problem-grid">
                     <div className="problem-content animate-slide-left">
                         <span className="section-tagline tag-alert">The Industry Status Quo</span>
-                        <h2 className="section-title">Software Shouldn't Cost a Fortune — Or Keep You Hostage</h2>
+                        <h2 className="section-title">Software Shouldn't Cost a Fortune or Keep You Hostage</h2>
                         <p className="section-body">
-                            Most software agencies overcharge for basic work, bury you in unclear invoices, and build systems only they understand — so you're stuck paying them forever just to make small changes. That's not a partnership. That's a trap.
+                            Most software agencies overcharge for basic work, bury you in unclear invoices, and build systems only they understand, leaving you stuck paying them forever just to make small changes. That's not a partnership. That's a trap.
                         </p>
                     </div>
                     <div className="problem-cards">

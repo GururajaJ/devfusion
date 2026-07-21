@@ -1,6 +1,17 @@
 import React from 'react';
 
-export default function Hero() {
+export default function Hero({ onOpenQuoteModal }) {
+    const handleCtaClick = (e) => {
+        e.preventDefault();
+        if (onOpenQuoteModal) {
+            onOpenQuoteModal();
+        }
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <section className="hero-section">
             <div className="container hero-container">
@@ -11,10 +22,12 @@ export default function Hero() {
                         <span className="highlight-text">Zero Lock-In.</span>
                     </h1>
                     <p className="hero-subtitle">
-                        We build web apps, mobile apps, and SaaS tools — priced fairly, delivered with full documentation, so you're never stuck depending on us to run your own product.
+                        Zoserve builds web apps, mobile apps, and SaaS tools at fair prices with full documentation so you understand and own what we build for you.
                     </p>
                     <div className="hero-cta-wrapper">
-                        <a href="#contact" className="btn btn-primary hero-btn">Get a Free Quote</a>
+                        <button onClick={handleCtaClick} className="btn btn-primary hero-btn border-none cursor-pointer">
+                            Get a Free Quote
+                        </button>
                         <div className="hero-cta-meta">
                             <span className="meta-main">No commitment.</span>
                             <span className="meta-sub">Reply within 24 hours.</span>
@@ -31,7 +44,7 @@ export default function Hero() {
                         </div>
                         <div className="visual-card-body">
                             <pre><code>{`{
-  "client": "devFusion Client",
+  "client": "Zoserve Client",
   "ownership": "100% Client",
   "documentation": "Complete",
   "walkthrough_video": "Attached",

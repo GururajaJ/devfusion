@@ -5,10 +5,13 @@ export default function HowWeAreDifferent() {
         <section className="different-section" id="different">
             <div className="container">
                 <div className="text-center section-header animate-on-scroll">
-                    <span className="section-tagline tag-white">Our Philosophy</span>
-                    <h2 className="section-title text-white">Fair Pricing. Full Transparency. Real Independence.</h2>
-                    <p className="section-body text-light text-center-max-width">
-                        We charge honestly, explain everything upfront, and hand over full documentation plus a walkthrough video with every project — so you actually understand what you're paying for and can manage it yourself if you ever want to.
+                    <span className="section-tagline tag-white">Why Us</span>
+                    <h2 className="section-title text-white">Software Shouldn't Cost More Just Because AI Made It Easier to Build</h2>
+                    <p className="section-body text-light text-center-max-width mb-4">
+                        Even after AI made development faster, most companies never passed those savings on. They still charge premium rates for basic work. We think that gap should close, not widen. That's why Zoserve prices fairly and stays lean.
+                    </p>
+                    <p className="section-body text-light text-center-max-width mt-3">
+                        But it goes deeper than price. We want you to actually understand what we build for you, down to the small features, so you're not stuck depending on us forever. Real independence isn't a slogan here, it's the goal. The more you learn about your own product, the less you need to rely on any company, including ours.
                     </p>
                 </div>
                 <div className="different-grid">
@@ -24,7 +27,7 @@ export default function HowWeAreDifferent() {
                             <span className="material-symbols-outlined">history_edu</span>
                         </div>
                         <h3 className="diff-title">Full Handover</h3>
-                        <p className="diff-desc">Documentation + a recorded walkthrough with every delivery.</p>
+                        <p className="diff-desc">Documentation plus a recorded walkthrough with every delivery.</p>
                     </div>
                     <div className="diff-card animate-scale-in delay-300">
                         <div className="icon-wrapper">

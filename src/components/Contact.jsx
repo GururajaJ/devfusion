@@ -18,12 +18,10 @@ export default function Contact() {
 
         setStatus('loading');
 
-        // Simulate API transmission
         setTimeout(() => {
             setStatus('success');
             setMessage(`Thank you, ${name}! We have received your details and will get back to you within 24 hours.`);
             
-            // Reset form
             setName('');
             setEmail('');
             setDetails('');
@@ -37,7 +35,7 @@ export default function Contact() {
                     <div className="contact-header text-center">
                         <h2 className="section-title text-white">Ready for Software That Doesn't Overcharge or Trap You?</h2>
                         <p className="section-body text-light text-center-max-width">
-                            Tell us what you need — we'll get back to you within 24 hours with a clear, honest quote.
+                            Tell us what you need, and we'll get back to you within 24 hours with a clear, honest quote.
                         </p>
                     </div>
                     
@@ -98,13 +96,13 @@ export default function Contact() {
                     <div className="contact-alternatives">
                         <span className="alternative-text">Or reach out directly:</span>
                         <div className="alternative-links">
-                            <a href="mailto:hello@devfusion.dev" className="alt-link">
+                            <a href="mailto:info@zoserve.com" className="alt-link">
                                 <span className="material-symbols-outlined text-[20px]">mail</span>
-                                <span>hello@devfusion.dev</span>
+                                <span>info@zoserve.com</span>
                             </a>
-                            <a href="https://wa.me/1234567890" target="_blank" className="alt-link">
+                            <a href="https://wa.me/15550192834" target="_blank" rel="noopener noreferrer" className="alt-link">
                                 <span className="material-symbols-outlined text-[20px]">chat</span>
-                                <span>Chat on WhatsApp</span>
+                                <span>WhatsApp: +1 (555) 019-2834</span>
                             </a>
                         </div>
                     </div>
