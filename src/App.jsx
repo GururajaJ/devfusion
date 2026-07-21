@@ -5,7 +5,6 @@ import WhoWeWorkWith from './components/WhoWeWorkWith';
 import Problem from './components/Problem';
 import HowWeAreDifferent from './components/HowWeAreDifferent';
 import Services from './components/Services';
-import Portfolio from './components/Portfolio';
 import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
@@ -45,7 +44,6 @@ function App() {
             <Problem />
             <HowWeAreDifferent />
             <Services />
-            <Portfolio />
             <Pricing onOpenQuoteModal={handleOpenQuoteModal} />
             <FAQ />
             <Contact />

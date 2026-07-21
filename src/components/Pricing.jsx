@@ -4,7 +4,7 @@ export default function Pricing({ onOpenQuoteModal }) {
     const pricingItems = [
         {
             title: "Landing Page / Website",
-            price: "$300",
+            price: "$3",
             note: "(single page)",
             icon: "web",
             desc: "High-converting, responsive landing pages built for fast speed and clear messaging.",
@@ -12,7 +12,7 @@ export default function Pricing({ onOpenQuoteModal }) {
         },
         {
             title: "Web App (custom)",
-            price: "$5,000",
+            price: "$5",
             note: "",
             icon: "devices",
             desc: "Custom web applications tailored to your specific workflow and user requirements.",
@@ -20,7 +20,7 @@ export default function Pricing({ onOpenQuoteModal }) {
         },
         {
             title: "Mobile App",
-            price: "$8,000",
+            price: "$80",
             note: "(iOS/Android)",
             icon: "smartphone",
             desc: "Native or cross-platform mobile apps for iOS and Android built for performance.",
@@ -28,7 +28,7 @@ export default function Pricing({ onOpenQuoteModal }) {
         },
         {
             title: "SaaS Tool Development",
-            price: "$10,000",
+            price: "$100",
             note: "",
             icon: "space_dashboard",
             desc: "Full-stack SaaS tools with authentication, database, user dashboards, and billing readiness.",

@@ -8,10 +8,15 @@ export default function QuoteModal({ isOpen, onClose, initialService = '' }) {
     const [solveDetails, setSolveDetails] = useState('');
     const [status, setStatus] = useState(null); // 'loading', 'success', 'error'
     const [message, setMessage] = useState('');
+    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         if (isOpen) {
             setService(initialService || 'Not sure yet');
+            const timer = setTimeout(() => setIsVisible(true), 30);
+            return () => clearTimeout(timer);
+        } else {
+            setIsVisible(false);
         }
     }, [initialService, isOpen]);
 
@@ -54,7 +59,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '' }) {
 
     return (
         <div className="modal-overlay" onClick={onClose}>
-            <div className="modal-card animate-scale-in" onClick={(e) => e.stopPropagation()}>
+            <div className={`modal-card animate-scale-in ${isVisible ? 'visible' : ''}`} onClick={(e) => e.stopPropagation()}>
                 <button className="modal-close-btn" aria-label="Close modal" onClick={onClose}>
                     <span className="material-symbols-outlined">close</span>
                 </button>
@@ -110,10 +115,10 @@ export default function QuoteModal({ isOpen, onClose, initialService = '' }) {
                                 disabled={status === 'loading'}
                                 className="modal-select"
                             >
-                                <option value="Landing Page / Website">Landing Page / Website (from $300)</option>
-                                <option value="Web App (custom)">Web App (custom) (from $5,000)</option>
-                                <option value="Mobile App">Mobile App (from $8,000)</option>
-                                <option value="SaaS Tool Development">SaaS Tool Development (from $10,000)</option>
+                                <option value="Landing Page / Website">Landing Page / Website (from $3)</option>
+                                <option value="Web App (custom)">Web App (custom) (from $5)</option>
+                                <option value="Mobile App">Mobile App (from $80)</option>
+                                <option value="SaaS Tool Development">SaaS Tool Development (from $100)</option>
                                 <option value="Not sure yet">Not sure yet</option>
                             </select>
                         </div>

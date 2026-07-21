@@ -1,6 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function PrivacyModal({ isOpen, onClose }) {
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        if (isOpen) {
+            const timer = setTimeout(() => setIsVisible(true), 30);
+            return () => clearTimeout(timer);
+        } else {
+            setIsVisible(false);
+        }
+    }, [isOpen]);
+
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.key === 'Escape' && isOpen) {
@@ -15,7 +26,7 @@ export default function PrivacyModal({ isOpen, onClose }) {
 
     return (
         <div className="modal-overlay" onClick={onClose}>
-            <div className="modal-card modal-card-large animate-scale-in" onClick={(e) => e.stopPropagation()}>
+            <div className={`modal-card modal-card-large animate-scale-in ${isVisible ? 'visible' : ''}`} onClick={(e) => e.stopPropagation()}>
                 <button className="modal-close-btn" aria-label="Close modal" onClick={onClose}>
                     <span className="material-symbols-outlined">close</span>
                 </button>
