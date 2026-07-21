@@ -1,18 +1,34 @@
 import React, { useState } from 'react';
 
+const countries = [
+    "United States",
+    "India",
+    "United Kingdom",
+    "Canada",
+    "Australia",
+    "Germany",
+    "France",
+    "Singapore",
+    "United Arab Emirates",
+    "Other"
+];
+
 export default function Contact() {
     const [name, setName] = useState('');
+    const [companyName, setCompanyName] = useState('');
     const [email, setEmail] = useState('');
+    const [country, setCountry] = useState('');
+    const [phone, setPhone] = useState('');
     const [service, setService] = useState('Not sure yet');
-    const [budget, setBudget] = useState('Not sure yet');
     const [solveDetails, setSolveDetails] = useState('');
+    
     const [status, setStatus] = useState(null); // 'loading', 'success', 'error'
     const [message, setMessage] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!name || !email || !solveDetails) {
+        if (!name || !companyName || !email || !country || !phone || !solveDetails) {
             setStatus('error');
             setMessage('Please fill in all fields.');
             return;
@@ -25,10 +41,12 @@ export default function Contact() {
             setMessage(`Thank you, ${name}! We have received your inquiry and will get back to you within 24 hours.`);
             
             setName('');
+            setCompanyName('');
             setEmail('');
+            setCountry('');
+            setPhone('');
             setSolveDetails('');
             setService('Not sure yet');
-            setBudget('Not sure yet');
         }, 1200);
     };
 
@@ -46,70 +64,97 @@ export default function Contact() {
                     <form onSubmit={handleSubmit} className="contact-form">
                         <div className="form-grid">
                             <div className="form-group">
-                                <label htmlFor="form-name">Your Name</label>
+                                <label htmlFor="form-name">Name *</label>
                                 <input 
                                     type="text" 
                                     id="form-name" 
                                     required 
-                                    placeholder="John Doe"
+                                    placeholder="Enter your name"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                     disabled={status === 'loading'}
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="form-email">Email Address</label>
+                                <label htmlFor="form-company">Company Name *</label>
                                 <input 
-                                    type="email" 
-                                    id="form-email" 
+                                    type="text" 
+                                    id="form-company" 
                                     required 
-                                    placeholder="john@example.com"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="Enter your company name"
+                                    value={companyName}
+                                    onChange={(e) => setCompanyName(e.target.value)}
                                     disabled={status === 'loading'}
                                 />
                             </div>
                         </div>
 
+                        <div className="form-group mt-3">
+                            <label htmlFor="form-email">Email Address *</label>
+                            <input 
+                                type="email" 
+                                id="form-email" 
+                                required 
+                                placeholder="Enter your email address"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                disabled={status === 'loading'}
+                            />
+                        </div>
+
                         <div className="form-grid mt-3">
                             <div className="form-group">
-                                <label htmlFor="form-service">What do you want to build?</label>
+                                <label htmlFor="form-country">Country *</label>
                                 <select 
-                                    id="form-service"
-                                    value={service}
-                                    onChange={(e) => setService(e.target.value)}
+                                    id="form-country"
+                                    required
+                                    value={country}
+                                    onChange={(e) => setCountry(e.target.value)}
                                     disabled={status === 'loading'}
                                     className="modal-select"
                                     style={{ background: 'var(--color-bg-base)', border: '1px solid var(--color-border-light)' }}
                                 >
-                                    <option value="Landing Page / Website">Landing Page / Website (from $300)</option>
-                                    <option value="Web App (custom)">Web App (custom) (from $5,000)</option>
-                                    <option value="Mobile App">Mobile App (from $8,000)</option>
-                                    <option value="SaaS Tool Development">SaaS Tool Development (from $10,000)</option>
-                                    <option value="Not sure yet">Not sure yet</option>
+                                    <option value="" disabled>Select your country</option>
+                                    {countries.map((c, i) => (
+                                        <option key={i} value={c}>{c}</option>
+                                    ))}
                                 </select>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="form-budget">Estimated Budget (Optional)</label>
-                                <select 
-                                    id="form-budget"
-                                    value={budget}
-                                    onChange={(e) => setBudget(e.target.value)}
+                                <label htmlFor="form-phone">Phone Number *</label>
+                                <input 
+                                    type="tel" 
+                                    id="form-phone" 
+                                    required 
+                                    placeholder="Phone number"
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
                                     disabled={status === 'loading'}
-                                    className="modal-select"
-                                    style={{ background: 'var(--color-bg-base)', border: '1px solid var(--color-border-light)' }}
-                                >
-                                    <option value="Under $1,000">Under $1,000</option>
-                                    <option value="$1,000 - $5,000">$1,000 - $5,000</option>
-                                    <option value="$5,000 - $10,000">$5,000 - $10,000</option>
-                                    <option value="$10,000+">$10,000+</option>
-                                    <option value="Not sure yet">Not sure yet</option>
-                                </select>
+                                />
                             </div>
                         </div>
 
                         <div className="form-group mt-3">
-                            <label htmlFor="form-solve">What are you trying to solve?</label>
+                            <label htmlFor="form-service">What do you want to build? *</label>
+                            <select 
+                                id="form-service"
+                                required
+                                value={service}
+                                onChange={(e) => setService(e.target.value)}
+                                disabled={status === 'loading'}
+                                className="modal-select"
+                                style={{ background: 'var(--color-bg-base)', border: '1px solid var(--color-border-light)' }}
+                            >
+                                <option value="Landing Page / Website">Landing Page / Website</option>
+                                <option value="Web App (custom)">Web App (custom)</option>
+                                <option value="Mobile App">Mobile App</option>
+                                <option value="SaaS Tool Development">SaaS Tool Development</option>
+                                <option value="Not sure yet">Not sure yet</option>
+                            </select>
+                        </div>
+
+                        <div className="form-group mt-3">
+                            <label htmlFor="form-solve">What are you trying to solve? *</label>
                             <textarea 
                                 id="form-solve" 
                                 rows="4" 
@@ -125,11 +170,11 @@ export default function Contact() {
                             className="btn btn-accent form-submit-btn mt-3"
                             disabled={status === 'loading'}
                         >
-                            {status === 'loading' ? 'Sending...' : 'Get a Free Quote'}
+                            {status === 'loading' ? 'Sending...' : 'Get Demo Access →'}
                         </button>
                         
                         <p className="text-center text-light text-[11px] mt-2 opacity-80">
-                            No spam. Your details stay private.
+                            By clicking, you agree to our <a href="#privacy" style={{ color: 'var(--color-accent)', fontWeight: '600' }}>Privacy Policy</a>
                         </p>
                     </form>
                     
