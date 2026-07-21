@@ -1,25 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-const countries = [
-    "United States",
-    "India",
-    "United Kingdom",
-    "Canada",
-    "Australia",
-    "Germany",
-    "France",
-    "Singapore",
-    "United Arab Emirates",
-    "Other"
-];
-
 export default function QuoteModal({ isOpen, onClose, initialService = '' }) {
     const [name, setName] = useState('');
     const [companyName, setCompanyName] = useState('');
     const [email, setEmail] = useState('');
     const [country, setCountry] = useState('');
     const [phone, setPhone] = useState('');
-    const [service, setService] = useState(initialService || 'Not sure yet');
+    const [service, setService] = useState(initialService || 'Other');
     const [solveDetails, setSolveDetails] = useState('');
     
     const [status, setStatus] = useState(null); // 'loading', 'success', 'error'
@@ -28,7 +15,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '' }) {
 
     useEffect(() => {
         if (isOpen) {
-            setService(initialService || 'Not sure yet');
+            setService(initialService || 'Other');
             const timer = setTimeout(() => setIsVisible(true), 30);
             return () => clearTimeout(timer);
         } else {
@@ -51,7 +38,7 @@ export default function QuoteModal({ isOpen, onClose, initialService = '' }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!name || !companyName || !email || !country || !phone || !solveDetails) {
+        if (!name || !companyName || !email || !country || !phone) {
             setStatus('error');
             setMessage('Please fill in all required fields.');
             return;
@@ -141,19 +128,15 @@ export default function QuoteModal({ isOpen, onClose, initialService = '' }) {
                         <div className="form-grid mb-3">
                             <div className="form-group">
                                 <label htmlFor="modal-country">Country *</label>
-                                <select 
-                                    id="modal-country"
-                                    required
-                                    value={country}
-                                    onChange={(e) => setCountry(e.target.value)}
-                                    disabled={status === 'loading'}
-                                    className="modal-select"
-                                >
-                                    <option value="" disabled>Select your country</option>
-                                    {countries.map((c, i) => (
-                                        <option key={i} value={c}>{c}</option>
-                                    ))}
-                                </select>
+                                <input 
+                                    type="text" 
+                                    id="modal-country" 
+                                    required 
+                                    placeholder="Enter your country" 
+                                    value={country} 
+                                    onChange={(e) => setCountry(e.target.value)} 
+                                    disabled={status === 'loading'} 
+                                />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="modal-phone">Phone Number *</label>
@@ -183,16 +166,15 @@ export default function QuoteModal({ isOpen, onClose, initialService = '' }) {
                                 <option value="Web App (custom)">Web App (custom)</option>
                                 <option value="Mobile App">Mobile App</option>
                                 <option value="SaaS Tool Development">SaaS Tool Development</option>
-                                <option value="Not sure yet">Not sure yet</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
 
                         <div className="form-group mb-4">
-                            <label htmlFor="modal-solve">What are you trying to solve? *</label>
+                            <label htmlFor="modal-solve">What is your need</label>
                             <textarea 
                                 id="modal-solve" 
                                 rows="3" 
-                                required 
                                 placeholder="E.g., We need to automate our invoicing, build a booking flow for customers, or launch a mobile app..."
                                 value={solveDetails}
                                 onChange={(e) => setSolveDetails(e.target.value)}

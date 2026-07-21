@@ -1,25 +1,12 @@
 import React, { useState } from 'react';
 
-const countries = [
-    "United States",
-    "India",
-    "United Kingdom",
-    "Canada",
-    "Australia",
-    "Germany",
-    "France",
-    "Singapore",
-    "United Arab Emirates",
-    "Other"
-];
-
 export default function Contact() {
     const [name, setName] = useState('');
     const [companyName, setCompanyName] = useState('');
     const [email, setEmail] = useState('');
     const [country, setCountry] = useState('');
     const [phone, setPhone] = useState('');
-    const [service, setService] = useState('Not sure yet');
+    const [service, setService] = useState('Other');
     const [solveDetails, setSolveDetails] = useState('');
     
     const [status, setStatus] = useState(null); // 'loading', 'success', 'error'
@@ -28,7 +15,7 @@ export default function Contact() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!name || !companyName || !email || !country || !phone || !solveDetails) {
+        if (!name || !companyName || !email || !country || !phone) {
             setStatus('error');
             setMessage('Please fill in all fields.');
             return;
@@ -46,7 +33,7 @@ export default function Contact() {
             setCountry('');
             setPhone('');
             setSolveDetails('');
-            setService('Not sure yet');
+            setService('Other');
         }, 1200);
     };
 
@@ -105,20 +92,15 @@ export default function Contact() {
                         <div className="form-grid mt-3">
                             <div className="form-group">
                                 <label htmlFor="form-country">Country *</label>
-                                <select 
-                                    id="form-country"
-                                    required
+                                <input 
+                                    type="text" 
+                                    id="form-country" 
+                                    required 
+                                    placeholder="Enter your country"
                                     value={country}
                                     onChange={(e) => setCountry(e.target.value)}
                                     disabled={status === 'loading'}
-                                    className="modal-select"
-                                    style={{ background: 'var(--color-bg-base)', border: '1px solid var(--color-border-light)' }}
-                                >
-                                    <option value="" disabled>Select your country</option>
-                                    {countries.map((c, i) => (
-                                        <option key={i} value={c}>{c}</option>
-                                    ))}
-                                </select>
+                                />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="form-phone">Phone Number *</label>
@@ -149,16 +131,15 @@ export default function Contact() {
                                 <option value="Web App (custom)">Web App (custom)</option>
                                 <option value="Mobile App">Mobile App</option>
                                 <option value="SaaS Tool Development">SaaS Tool Development</option>
-                                <option value="Not sure yet">Not sure yet</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
 
                         <div className="form-group mt-3">
-                            <label htmlFor="form-solve">What are you trying to solve? *</label>
+                            <label htmlFor="form-solve">What is your need</label>
                             <textarea 
                                 id="form-solve" 
                                 rows="4" 
-                                required 
                                 placeholder="E.g., We need to automate our invoicing, build a booking flow for customers, or launch a mobile app..."
                                 value={solveDetails}
                                 onChange={(e) => setSolveDetails(e.target.value)}

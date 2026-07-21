@@ -25,7 +25,7 @@ export default function Header({ onOpenQuoteModal }) {
         e.preventDefault();
         setMobileOpen(false);
         if (onOpenQuoteModal) {
-            onOpenQuoteModal('Not sure yet');
+            onOpenQuoteModal('Other');
         }
     };
 

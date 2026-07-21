@@ -4,7 +4,7 @@ export default function Hero({ onOpenQuoteModal }) {
     const handleCtaClick = (e) => {
         e.preventDefault();
         if (onOpenQuoteModal) {
-            onOpenQuoteModal('Not sure yet');
+            onOpenQuoteModal('Other');
         }
     };
 

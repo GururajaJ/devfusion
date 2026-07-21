@@ -16,7 +16,7 @@ import useAnimateOnScroll from './hooks/useAnimateOnScroll';
 function App() {
     const containerRef = useAnimateOnScroll();
     const [quoteModalOpen, setQuoteModalOpen] = useState(false);
-    const [selectedService, setSelectedService] = useState('Not sure yet');
+    const [selectedService, setSelectedService] = useState('Other');
     const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
 
     // Disable background page scrolling when a popup modal is open
@@ -31,7 +31,7 @@ function App() {
         };
     }, [quoteModalOpen, privacyModalOpen]);
 
-    const handleOpenQuoteModal = (serviceName = 'Not sure yet') => {
+    const handleOpenQuoteModal = (serviceName = 'Other') => {
         setSelectedService(serviceName);
         setQuoteModalOpen(true);
     };
