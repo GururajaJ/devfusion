@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import WhoWeWorkWith from './components/WhoWeWorkWith';
@@ -18,6 +18,18 @@ function App() {
     const [quoteModalOpen, setQuoteModalOpen] = useState(false);
     const [selectedService, setSelectedService] = useState('Not sure yet');
     const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
+
+    // Disable background page scrolling when a popup modal is open
+    useEffect(() => {
+        if (quoteModalOpen || privacyModalOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [quoteModalOpen, privacyModalOpen]);
 
     const handleOpenQuoteModal = (serviceName = 'Not sure yet') => {
         setSelectedService(serviceName);
