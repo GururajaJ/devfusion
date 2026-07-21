@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Pricing({ onOpenQuoteModal }) {
+export default function Pricing() {
     const pricingItems = [
         {
             title: "Landing Page / Website",
@@ -36,16 +36,6 @@ export default function Pricing({ onOpenQuoteModal }) {
         }
     ];
 
-    const handleCtaClick = (itemTitle) => {
-        if (onOpenQuoteModal) {
-            onOpenQuoteModal(itemTitle);
-        }
-        const contactSection = document.getElementById('contact');
-        if (contactSection) {
-            contactSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
     return (
         <section className="pricing-section" id="pricing">
             <div className="container">
@@ -73,12 +63,12 @@ export default function Pricing({ onOpenQuoteModal }) {
                                 </div>
                             </div>
                             <p className="pricing-card-desc">{item.desc}</p>
-                            <button 
-                                className="btn btn-primary pricing-btn cursor-pointer"
-                                onClick={() => handleCtaClick(item.title)}
+                            <a 
+                                href="#contact"
+                                className="btn btn-primary pricing-btn"
                             >
                                 Get a Free Quote
-                            </button>
+                            </a>
                         </div>
                     ))}
                 </div>

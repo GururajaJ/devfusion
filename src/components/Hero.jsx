@@ -1,17 +1,6 @@
 import React from 'react';
 
-export default function Hero({ onOpenQuoteModal }) {
-    const handleCtaClick = (e) => {
-        e.preventDefault();
-        if (onOpenQuoteModal) {
-            onOpenQuoteModal();
-        }
-        const contactSection = document.getElementById('contact');
-        if (contactSection) {
-            contactSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
+export default function Hero() {
     return (
         <section className="hero-section">
             <div className="container hero-container">
@@ -25,9 +14,9 @@ export default function Hero({ onOpenQuoteModal }) {
                         Zoserve builds web apps, mobile apps, and SaaS tools at fair prices with full documentation so you understand and own what we build for you.
                     </p>
                     <div className="hero-cta-wrapper">
-                        <button onClick={handleCtaClick} className="btn btn-primary hero-btn border-none cursor-pointer">
+                        <a href="#contact" className="btn btn-primary hero-btn">
                             Get a Free Quote
-                        </button>
+                        </a>
                         <div className="hero-cta-meta">
                             <span className="meta-main">No commitment.</span>
                             <span className="meta-sub">Reply within 24 hours.</span>

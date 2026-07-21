@@ -9,25 +9,12 @@ import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import QuoteModal from './components/QuoteModal';
 import PrivacyModal from './components/PrivacyModal';
 import useAnimateOnScroll from './hooks/useAnimateOnScroll';
 
 function App() {
     const containerRef = useAnimateOnScroll();
-    const [quoteModalOpen, setQuoteModalOpen] = useState(false);
-    const [selectedService, setSelectedService] = useState('');
     const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
-
-    const handleOpenQuoteModal = (serviceName = '') => {
-        setSelectedService(serviceName);
-        setQuoteModalOpen(true);
-    };
-
-    const handleCloseQuoteModal = () => {
-        setQuoteModalOpen(false);
-        setSelectedService('');
-    };
 
     const handleOpenPrivacyModal = () => {
         setPrivacyModalOpen(true);
@@ -39,22 +26,16 @@ function App() {
 
     return (
         <div ref={containerRef}>
-            <Header onOpenQuoteModal={handleOpenQuoteModal} />
-            <Hero onOpenQuoteModal={handleOpenQuoteModal} />
+            <Header />
+            <Hero />
             <WhoWeWorkWith />
             <Problem />
             <HowWeAreDifferent />
             <Services />
-            <Pricing onOpenQuoteModal={handleOpenQuoteModal} />
+            <Pricing />
             <FAQ />
             <Contact />
             <Footer onOpenPrivacyModal={handleOpenPrivacyModal} />
-
-            <QuoteModal 
-                isOpen={quoteModalOpen} 
-                onClose={handleCloseQuoteModal} 
-                initialService={selectedService}
-            />
 
             <PrivacyModal 
                 isOpen={privacyModalOpen} 

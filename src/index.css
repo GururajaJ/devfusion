@@ -294,6 +294,11 @@ pre, code {
     height: 36px;
     width: auto;
     object-fit: contain;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.brand-wrapper:hover .brand-logo {
+    transform: scale(1.1) rotate(5deg);
 }
 
 .logo {
@@ -318,12 +323,38 @@ pre, code {
     font-weight: 500;
     color: var(--color-text-muted);
     padding: 8px 12px;
-    border-radius: var(--radius-sm);
+    position: relative;
+    transition: color 0.3s ease;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 12px;
+    right: 12px;
+    height: 2px;
+    background-color: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover {
     color: var(--color-primary);
-    background-color: rgba(26, 60, 110, 0.04);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.nav-link.active {
+    color: var(--color-primary);
+}
+
+.nav-link.active::after {
+    transform: scaleX(1);
 }
 
 .nav-cta {
@@ -477,10 +508,17 @@ pre, code {
     border: 1px solid rgba(255, 255, 255, 0.1);
     transform: perspective(1000px) rotateY(-8deg) rotateX(4deg);
     transition: transform 0.5s ease;
+    animation: visualCardFloat 6s ease-in-out infinite;
 }
 
 .visual-card:hover {
     transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+    animation-play-state: paused;
+}
+
+@keyframes visualCardFloat {
+    0%, 100% { transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateY(0); }
+    50% { transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateY(-8px); }
 }
 
 .visual-card-header {

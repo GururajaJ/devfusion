@@ -21,13 +21,16 @@ export default function Footer({ onOpenPrivacyModal }) {
                     </div>
                     <div className="footer-link-group">
                         <span className="footer-group-title">Legal &amp; Policy</span>
-                        <button 
-                            onClick={onOpenPrivacyModal}
-                            className="footer-link text-left bg-transparent border-none cursor-pointer p-0"
-                            style={{ font: 'inherit', color: 'rgba(255, 255, 255, 0.6)', cursor: 'pointer' }}
+                        <a 
+                            href="#privacy"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                if (onOpenPrivacyModal) onOpenPrivacyModal();
+                            }}
+                            className="footer-link"
                         >
                             Privacy Policy
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
