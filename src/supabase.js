@@ -1,8 +1,7 @@
 export const SUPABASE_URL = "https://lmjyjpdbmmvnwocuabgw.supabase.co";
 export const SUPABASE_KEY = "sb_publishable_mkvDgZfdEGYobvORJ9wEyw_1nV07MTp";
 
-// Access key from web3forms.com registered for info@zoserve.com
-export const WEB3FORMS_KEY = "36df90cb-d4ee-4c54-8e10-bfeb87fa13c3"; // Replace this with the actual key received in info@zoserve.com email
+export const WEB3FORMS_KEY = "12a389b2-ddc6-4150-ac3a-777cd84a8f5e";
 
 export async function sendEmailNotification(leadData) {
     if (!WEB3FORMS_KEY || WEB3FORMS_KEY === "YOUR_WEB3FORMS_KEY") {
