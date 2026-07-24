@@ -3,8 +3,9 @@ import { useEffect, useRef } from 'react';
 /**
  * Custom React Hook that sets up an Intersection Observer
  * to apply viewport-based scroll entrance animations.
+ * Can take a trigger parameter (like pathname) to scan new DOM nodes on route changes.
  */
-export default function useAnimateOnScroll() {
+export default function useAnimateOnScroll(trigger) {
     const containerRef = useRef(null);
 
     useEffect(() => {
@@ -17,27 +18,30 @@ export default function useAnimateOnScroll() {
                 }
             });
         }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px' // Trigger slightly before element fully enters
+            threshold: 0.05,
+            rootMargin: '0px 0px -30px 0px' // Trigger slightly before element enters
         });
 
         const container = containerRef.current;
+        let targets = [];
+        
         if (container) {
-            const targets = container.querySelectorAll(
+            targets = Array.from(container.querySelectorAll(
                 '.animate-on-scroll, .animate-slide-left, .animate-slide-right, .animate-scale-in'
-            );
+            ));
             targets.forEach(target => observer.observe(target));
         }
 
         return () => {
-            if (container) {
-                const targets = container.querySelectorAll(
-                    '.animate-on-scroll, .animate-slide-left, .animate-slide-right, .animate-scale-in'
-                );
-                targets.forEach(target => observer.unobserve(target));
-            }
+            targets.forEach(target => {
+                try {
+                    observer.unobserve(target);
+                } catch (e) {
+                    // Ignore elements already unmounted
+                }
+            });
         };
-    }, []);
+    }, [trigger]);
 
     return containerRef;
 }

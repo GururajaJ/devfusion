@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import QuoteModal from './components/QuoteModal';
 import PrivacyModal from './components/PrivacyModal';
+import useAnimateOnScroll from './hooks/useAnimateOnScroll';
 
 // Pages
 import Home from './pages/Home/Home';
@@ -21,6 +22,9 @@ function ScrollToTop() {
 }
 
 function AppContent() {
+    const location = useLocation();
+    const containerRef = useAnimateOnScroll(location.pathname);
+    
     const [quoteModalOpen, setQuoteModalOpen] = useState(false);
     const [selectedService, setSelectedService] = useState('Other');
     const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
@@ -55,7 +59,7 @@ function AppContent() {
     };
 
     return (
-        <div className="min-h-screen flex flex-col">
+        <div ref={containerRef} className="min-h-screen flex flex-col">
             <ScrollToTop />
             
             {/* Global Header */}
