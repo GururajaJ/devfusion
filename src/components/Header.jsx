@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import Logo from './Logo';
 
 export default function Header({ onOpenQuoteModal }) {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -29,19 +31,24 @@ export default function Header({ onOpenQuoteModal }) {
         }
     };
 
+    // Calculate base path prefix for anchor links if we are not on the homepage
+    const isHome = location.pathname === '/';
+    const pathPrefix = isHome ? '' : '/';
+
     return (
         <header className={`header ${scrolled ? 'scrolled' : ''}`}>
             <div className={`container header-container ${mobileOpen ? 'mobile-open' : ''}`}>
-                <a href="#" className="brand-wrapper" onClick={handleLinkClick}>
+                <Link to="/" className="brand-wrapper" onClick={handleLinkClick}>
                     <Logo width={36} height={36} />
                     <span className="logo">Zo<span className="logo-accent">serve</span></span>
-                </a>
+                </Link>
                 <nav className="nav-menu">
-                    <a href="#about" className="nav-link" onClick={handleLinkClick}>About</a>
-                    <a href="#different" className="nav-link" onClick={handleLinkClick}>Why Us</a>
-                    <a href="#services" className="nav-link" onClick={handleLinkClick}>Services</a>
-                    <a href="#pricing" className="nav-link" onClick={handleLinkClick}>Pricing</a>
-                    <a href="#faq" className="nav-link" onClick={handleLinkClick}>FAQ</a>
+                    <a href={`${pathPrefix}#about`} className="nav-link" onClick={handleLinkClick}>About</a>
+                    <a href={`${pathPrefix}#different`} className="nav-link" onClick={handleLinkClick}>Why Us</a>
+                    <a href={`${pathPrefix}#services`} className="nav-link" onClick={handleLinkClick}>Services</a>
+                    <a href={`${pathPrefix}#pricing`} className="nav-link" onClick={handleLinkClick}>Pricing</a>
+                    <a href={`${pathPrefix}#faq`} className="nav-link" onClick={handleLinkClick}>FAQ</a>
+                    <Link to="/blog" className={`nav-link ${location.pathname.startsWith('/blog') ? 'text-blue-600 font-bold' : ''}`} onClick={handleLinkClick}>Blog</Link>
                     <button className="btn btn-primary mobile-cta border-none cursor-pointer" onClick={handleCtaClick}>Get a Free Quote</button>
                 </nav>
                 <button className="btn btn-primary nav-cta border-none cursor-pointer" onClick={handleCtaClick}>Get a Free Quote</button>

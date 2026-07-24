@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Logo from './Logo';
 
 export default function Footer({ onOpenPrivacyModal }) {
@@ -6,10 +7,10 @@ export default function Footer({ onOpenPrivacyModal }) {
         <footer className="footer">
             <div className="container footer-container animate-on-scroll">
                 <div className="footer-brand">
-                    <a href="#" className="brand-wrapper text-white">
+                    <Link to="/" className="brand-wrapper text-white">
                         <Logo width={36} height={36} />
                         <span className="logo text-white">Zo<span className="logo-accent">serve</span></span>
-                    </a>
+                    </Link>
                     <p className="footer-tagline">Engineering digital independence. We build software you understand and own — forever.</p>
                 </div>
                 
@@ -18,6 +19,10 @@ export default function Footer({ onOpenPrivacyModal }) {
                         <span className="footer-group-title">Contact</span>
                         <a href="mailto:info@zoserve.com" className="footer-link">info@zoserve.com</a>
                         <a href="https://wa.me/919976184318" target="_blank" rel="noopener noreferrer" className="footer-link">WhatsApp: +91 99761 84318</a>
+                    </div>
+                    <div className="footer-link-group">
+                        <span className="footer-group-title">Resources</span>
+                        <Link to="/blog" className="footer-link">Blog</Link>
                     </div>
                     <div className="footer-link-group">
                         <span className="footer-group-title">Legal &amp; Policy</span>
