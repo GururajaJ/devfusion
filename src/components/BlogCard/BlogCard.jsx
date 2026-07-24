@@ -10,7 +10,7 @@ export default function BlogCard({ blog }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.4 }}
-            className="flex flex-col overflow-hidden bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 group"
+            className="text-left flex flex-col overflow-hidden bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 group"
         >
             <Link to={`/blog/${blog.slug}`} className="block overflow-hidden relative aspect-video">
                 <img 

@@ -81,9 +81,9 @@ export default function BlogDetails() {
                 {JSON.stringify(articleSchema)}
             </script>
 
-            <div className="container px-4 mx-auto">
+            <div className="max-w-[1200px] w-full mx-auto px-6">
                 {/* Breadcrumbs */}
-                <nav className="flex items-center gap-2 text-xs font-semibold text-slate-400 mb-8 max-w-5xl mx-auto">
+                <nav className="flex items-center gap-2 text-xs font-semibold text-slate-400 mb-8">
                     <Link to="/" className="hover:text-blue-600 transition-colors">Home</Link>
                     <span>/</span>
                     <Link to="/blog" className="hover:text-blue-600 transition-colors">Blog</Link>
@@ -91,7 +91,7 @@ export default function BlogDetails() {
                     <span className="text-slate-600 truncate">{blog.title}</span>
                 </nav>
 
-                <div className="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto items-start">
+                <div className="flex flex-col lg:flex-row gap-8 items-start">
                     
                     {/* Main Content Area */}
                     <article className="w-full lg:w-2/3 bg-white border border-slate-100 rounded-3xl p-6 md:p-10 shadow-sm text-left">

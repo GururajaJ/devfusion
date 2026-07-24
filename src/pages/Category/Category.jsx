@@ -25,9 +25,9 @@ export default function Category() {
 
     return (
         <div className="bg-slate-50/50 min-h-screen pt-24 pb-16 text-left">
-            <div className="container px-4 mx-auto">
+            <div className="max-w-[1200px] w-full mx-auto px-6">
                 {/* Breadcrumbs */}
-                <nav className="flex items-center gap-2 text-xs font-semibold text-slate-400 mb-8 max-w-5xl mx-auto">
+                <nav className="flex items-center gap-2 text-xs font-semibold text-slate-400 mb-8">
                     <Link to="/" className="hover:text-blue-600 transition-colors">Home</Link>
                     <span>/</span>
                     <Link to="/blog" className="hover:text-blue-600 transition-colors">Blog</Link>
@@ -37,7 +37,7 @@ export default function Category() {
                     <span className="text-slate-600 font-bold">{decodedCategory}</span>
                 </nav>
 
-                <div className="max-w-5xl mx-auto">
+                <div className="w-full">
                     {/* Header */}
                     <div className="mb-12 border-b border-slate-100 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
                         <div>

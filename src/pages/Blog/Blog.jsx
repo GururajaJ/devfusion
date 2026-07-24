@@ -90,7 +90,7 @@ export default function Blog() {
 
     return (
         <div className="bg-slate-50/50 min-h-screen pt-24 pb-16">
-            <div className="container px-4 mx-auto">
+            <div className="max-w-[1200px] w-full mx-auto px-6">
                 {/* Hero Section */}
                 <header className="py-12 md:py-16 text-center max-w-3xl mx-auto flex flex-col items-center">
                     <motion.div 
